@@ -31,12 +31,12 @@ const Pin = (props) => {
                     onPress={onLike}
                     style={styles.heartBtn}
                 >
-                    <AntDesign name="hearto" size={24} color="black" />
+                    <AntDesign name="hearto" size={16} color="black" />
                 </Pressable>
             </View>
-            <Text style={
-                styles.title
-            }>{title}</Text>
+            <Text
+                numberOfLines={2}
+                style={styles.title}>{title}</Text>
         </View>
     )
 }
@@ -52,15 +52,17 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 16,
-        fontWeight: "bold",
-        margin: 10
+        fontWeight: "600",
+        lineHeight: 22,
+        margin: 5,
+        color: "#000"
     },
     heartBtn: {
         position: "absolute",
         bottom: 10,
         right: 10,
         backgroundColor: '#D3DCD4',
-        padding: 10,
+        padding: 7,
         borderRadius: 50
     }
 })
