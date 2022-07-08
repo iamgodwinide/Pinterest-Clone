@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, Image, Pressable } from "react-native"
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const Pin = (props) => {
-    const { title, image } = props.pin
+    const { title, image, id } = props.pin
     const [ratio, setRatio] = useState(2 / 1);
+    const navigation = useNavigation();
 
-    const onLike = () => {
-
-    }
 
     useEffect(() => {
         if (image) {
@@ -16,10 +15,21 @@ const Pin = (props) => {
                 setRatio(width / height);
             });
         }
-    }, [])
+    }, []);
+
+
+    const onLike = () => {
+
+    }
+
+    const goToPinPage = () => {
+        navigation.navigate("Pin", { id });
+    }
 
     return (
-        <View style={styles.pin}>
+        <Pressable
+            onPress={goToPinPage}
+            style={styles.pin}>
             <View>
                 <Image
                     source={{ uri: image }}
@@ -37,7 +47,7 @@ const Pin = (props) => {
             <Text
                 numberOfLines={2}
                 style={styles.title}>{title}</Text>
-        </View>
+        </Pressable>
     )
 }
 
